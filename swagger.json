@@ -1,0 +1,225 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "JingleBid",
+		"version": "1.0.0"
+	},
+	"tags": [
+		{
+			"name": "Product",
+			"description": "Endpoints for product manipulation"
+		},
+		{
+			"name": "Auction",
+			"description": "Endpoints for auction manipulation"
+		}
+	],
+	"paths": {
+		"/product": {
+			"get": {
+				"tags": ["Product"],
+				"summary": "Get all products",
+				"responses": {
+					"200": {
+						"description": "List of products"
+					}
+				}
+			},
+			"post": {
+				"tags": ["Product"],
+				"summary": "Create a product",
+				"parameters": [
+					{
+						"name": "product",
+						"in": "body",
+						"description": "The product to be created",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Product"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "The created product"
+					}
+				}
+			}
+		},
+		"/product/{id}": {
+			"get": {
+				"tags": ["Product"],
+				"summary": "Get a product by id",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "Product id",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "The requested product"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["Product"],
+				"summary": "Delete a product",
+				"parameters": [
+					{
+						"name": "product",
+						"in": "body",
+						"description": "The product to be deleted",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Product"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "The deleted product"
+					}
+				}
+			},
+			"put": {
+				"tags": ["Product"],
+				"summary": "Update a product",
+				"parameters": [
+					{
+						"name": "product",
+						"in": "body",
+						"description": "The product to be updated",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Product"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "The updated product"
+					}
+				}
+			}
+		},
+		"/auction": {
+			"get": {
+				"tags": ["Auction"],
+				"summary": "Get all auctions",
+				"responses": {
+					"200": {
+						"description": "List of auctions"
+					}
+				}
+			},
+			"post": {
+				"tags": ["Auction"],
+				"summary": "Create an auction",
+				"parameters": [
+					{
+						"name": "auction",
+						"in": "body",
+						"description": "The auction to be created",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Auction"
+						}
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "The created auction"
+					}
+				}
+			}
+		},
+		"/auction/{id}": {
+			"get": {
+				"tags": ["Auction"],
+				"summary": "Get a auction by id",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "auction id",
+						"required": true,
+						"type": "integer"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "The requested auction"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["Auction"],
+				"summary": "Delete a auction",
+				"parameters": [
+					{
+						"name": "auction",
+						"in": "body",
+						"description": "The auction to be deleted",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Auction"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "The deleted auction"
+					}
+				}
+			},
+			"put": {
+				"tags": ["Auction"],
+				"summary": "Update a auction",
+				"parameters": [
+					{
+						"name": "auction",
+						"in": "body",
+						"description": "The auction to be updated",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Auction"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "The updated auction"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"Product": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				}
+			}
+		},
+		"Auction": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
