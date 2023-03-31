@@ -3,8 +3,10 @@ package com.example.JingleBidAPI.controller;
 import com.example.JingleBidAPI.model.Product;
 import com.example.JingleBidAPI.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 @RestController
@@ -26,18 +28,28 @@ public class ProductController {
     }
 
     @GetMapping(path = "/product/{id}")
-    public Product getProductDetails(@RequestParam Long id) throws InterruptedException, ExecutionException {
-        return productRepository.findById(id).get();
+    public Product getProductDetails(@PathVariable Long id) throws InterruptedException, ExecutionException {
+        Optional<Product> productOptional = productRepository.findById(id) ;
+        if(productOptional.isPresent())
+            return productOptional.get() ;
+        else
+            return null ;
     }
 
-    @PutMapping(path = "/product")
-    public void updateProduct(@RequestBody Product product, Long id ) throws InterruptedException, ExecutionException {
-        Product product1 = productRepository.findById(id).get();
-        product1.setName(product.getName());
+    @PutMapping(path = "/product/{id}")
+    public void updateProduct(@RequestBody Product product, @PathVariable Long id ) throws InterruptedException, ExecutionException {
+
+        Optional<Product> productOptional = productRepository.findById(id) ;
+        if(productOptional.isPresent()) {
+             Product product1 = productOptional.get();
+             product1.setName(product.getName());
+             productRepository.save(product1);
+        }
     }
 
-    @DeleteMapping(path = "/product")
-    public void deleteProduct(@RequestParam Long id) throws InterruptedException, ExecutionException {
+
+    @DeleteMapping(path = "/product/{id}")
+    public void deleteProduct(@PathVariable Long id) throws InterruptedException, ExecutionException {
         productRepository.deleteById(id);
     }
 
