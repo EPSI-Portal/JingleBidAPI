@@ -1,29 +1,9 @@
-!**/src/main/**/target/
-!**/src/test/**/target/
-bin
-
-### Gradle
+HELP.md
 .gradle
-**/build/
-!src/**/build/
-gradle-app.setting
-!gradle-wrapper.jar
-!gradle-wrapper.properties
-.gradletasknamecache
-
-### Maven
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-mvnw
-mvnw.cmd
-.mvn/wrapper/*
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 
 ### STS ###
 .apt_generated
@@ -33,6 +13,18 @@ mvnw.cmd
 .settings
 .springBeans
 .sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
 
 ### NetBeans ###
 /nbproject/private/
@@ -40,13 +32,6 @@ mvnw.cmd
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### IDE ###
+### VS Code ###
 .vscode/
-.idea/
-*.iws
-*.iml
-*.ipr
