@@ -11,14 +11,13 @@ import java.util.concurrent.ExecutionException;
 public class ProductController {
 
     @Autowired
-    private ProductRepository productRepository;
+    ProductRepository productRepository;
 
     @PostMapping(path = "/product")
-    public void postProduct(@RequestBody Product product) throws InterruptedException, ExecutionException {
-            Product product1 = new Product();
-            product1.setId(product.getId());
-            product1.setName(product1.getName());
-            productRepository.save(product);
+    public void postProduct(@RequestBody Product produt) throws InterruptedException, ExecutionException {
+        Product product1 = new Product();
+        product1.setName(produt.getName());
+        productRepository.save(product1);
     }
 
     @GetMapping(path = "/product")
@@ -27,19 +26,19 @@ public class ProductController {
     }
 
     @GetMapping(path = "/product/{id}")
-    public Product getProductDetails(@RequestParam String id) throws InterruptedException, ExecutionException {
-        return productRepository.findById(Integer.valueOf(id)).get();
+    public Product getProductDetails(@RequestParam Long id) throws InterruptedException, ExecutionException {
+        return productRepository.findById(id).get();
     }
 
     @PutMapping(path = "/product")
-    public void updateProduct(@RequestBody Product product, String id ) throws InterruptedException, ExecutionException {
-        Product product1 = productRepository.findById(Integer.valueOf(id)).get();
+    public void updateProduct(@RequestBody Product product, Long id ) throws InterruptedException, ExecutionException {
+        Product product1 = productRepository.findById(id).get();
         product1.setName(product.getName());
     }
 
     @DeleteMapping(path = "/product")
-    public void deleteProduct(@RequestParam String id) throws InterruptedException, ExecutionException {
-        productRepository.deleteById(Integer.valueOf(id));
+    public void deleteProduct(@RequestParam Long id) throws InterruptedException, ExecutionException {
+        productRepository.deleteById(id);
     }
 
 }
