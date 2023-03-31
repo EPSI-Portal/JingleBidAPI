@@ -1,10 +1,11 @@
-package com.example.JingleBidAPI;
+package fr.epsi.JingleBidAPI;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class JingleBidApiApplicationTests {
+
 
 	@Test
 	void contextLoads() {
