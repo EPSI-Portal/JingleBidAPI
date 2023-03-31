@@ -205,8 +205,35 @@
 				"id": {
 					"type": "string"
 				},
+				"condition": {
+					"type": "string"
+				},
 				"name": {
 					"type": "string"
+				},
+				"img": {
+					"type": "object",
+					"properties": {
+						"main": {
+							"type": "string"
+						},
+						"secondary": {
+							"type": "string"
+						}
+					}
+				},
+				"longDesc": {
+					"type": "string"
+				},
+				"shortDesc": {
+					"type": "string"
+				},
+				"price": {
+					"type": "number"
+				},
+				"createdAt": {
+					"type": "string",
+					"format": "date-time"
 				}
 			}
 		},
@@ -216,9 +243,30 @@
 				"id": {
 					"type": "string"
 				},
-				"name": {
-					"type": "string"
+				"productId": {
+					"type": "number"
+				},
+				"actualPrice": {
+					"type": "number"
+				},
+				"timeOptions": {
+					"type": "object",
+					"properties": {
+						"createdAt": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"startTime": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"stopTime": {
+							"type": "string",
+							"format": "date-time"
+						}
+					}
 				}
+
 			}
 		}
 	}
