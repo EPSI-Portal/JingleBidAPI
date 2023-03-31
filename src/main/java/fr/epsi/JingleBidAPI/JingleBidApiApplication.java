@@ -1,4 +1,4 @@
-package com.example.JingleBidAPI;
+package fr.epsi.JingleBidAPI;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

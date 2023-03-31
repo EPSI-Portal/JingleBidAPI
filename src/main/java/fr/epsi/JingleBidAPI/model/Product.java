@@ -1,4 +1,4 @@
-package com.example.JingleBidAPI.model;
+package fr.epsi.JingleBidAPI.model;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,7 +1,7 @@
-package com.example.JingleBidAPI.controller;
+package fr.epsi.JingleBidAPI.controller;
 
-import com.example.JingleBidAPI.model.Product;
-import com.example.JingleBidAPI.repository.ProductRepository;
+import fr.epsi.JingleBidAPI.model.Product;
+import fr.epsi.JingleBidAPI.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
