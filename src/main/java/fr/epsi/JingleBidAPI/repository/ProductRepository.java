@@ -1,6 +1,6 @@
-package com.example.JingleBidAPI.repository;
+package fr.epsi.JingleBidAPI.repository;
 
-import com.example.JingleBidAPI.model.Product;
+import fr.epsi.JingleBidAPI.model.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
