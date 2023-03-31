@@ -1,12 +1,13 @@
-package fr.epsi.JingleBidAPI;
+package fr.epsi.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JingleBidApiApplication {
+public class AtelierApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JingleBidApiApplication.class, args);
+		SpringApplication.run(AtelierApplication.class, args);
 	}
+
 }
