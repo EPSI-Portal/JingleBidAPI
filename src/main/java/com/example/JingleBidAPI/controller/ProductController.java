@@ -3,7 +3,6 @@ package com.example.JingleBidAPI.controller;
 import com.example.JingleBidAPI.model.Product;
 import com.example.JingleBidAPI.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -16,10 +15,18 @@ public class ProductController {
     ProductRepository productRepository;
 
     @PostMapping(path = "/product")
-    public void postProduct(@RequestBody Product produt) throws InterruptedException, ExecutionException {
+    public @ResponseBody Product postProduct(@RequestBody Product product) throws InterruptedException, ExecutionException {
         Product product1 = new Product();
-        product1.setName(produt.getName());
-        productRepository.save(product1);
+        System.out.println(product.toString());
+        System.out.println(product1);
+        product1.setName(product.getName());
+        product1.setCondition(product.getCondition());
+        product1.setImage(product.getImage());
+        product1.setLongDesc(product.getLongDesc());
+        product1.setShortDesc(product.getShortDesc());
+        product1.setPrice(product.getPrice());
+        product1.setCreatedAt(product.getCreatedAt());
+        return productRepository.save(product1);
     }
 
     @GetMapping(path = "/product")
@@ -41,16 +48,28 @@ public class ProductController {
 
         Optional<Product> productOptional = productRepository.findById(id) ;
         if(productOptional.isPresent()) {
-             Product product1 = productOptional.get();
-             product1.setName(product.getName());
+            Product product1 = productOptional.get();
+            product1.setName(product.getName());
+            product1.setCondition(product.getCondition());
+            product1.setImage(product.getImage());
+            product1.setLongDesc(product.getLongDesc());
+            product1.setShortDesc(product.getShortDesc());
+            product1.setPrice(product.getPrice());
+            product1.setCreatedAt(product.getCreatedAt());
              productRepository.save(product1);
         }
     }
 
 
     @DeleteMapping(path = "/product/{id}")
-    public void deleteProduct(@PathVariable Long id) throws InterruptedException, ExecutionException {
-        productRepository.deleteById(id);
+    public @ResponseBody String deleteProduct(@PathVariable Long id) throws InterruptedException, ExecutionException {
+        Optional<Product> productOptional = productRepository.findById(id) ;
+        if(productOptional.isPresent()) {
+            productRepository.deleteById(id);
+            return "Le produit avec l'id " + id + " a été supprimé" ;
+
+        }
+        return "ID introuvable";
     }
 
 }
