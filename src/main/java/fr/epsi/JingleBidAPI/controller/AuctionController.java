@@ -17,16 +17,9 @@ public class AuctionController {
     @PostMapping(path = "/auction")
     public @ResponseBody Auction postAuction(@RequestBody Auction auction) throws InterruptedException, ExecutionException {
             Auction auction1 = new Auction();
-            auction1.setId(auction.getId());
-            System.out.println(auction.toString());
-            System.out.println(auction1);
-            auction1.setName(auction.getName());
-            auction1.setCondition(auction.getCondition());
-            auction1.setImage(auction.getImage());
-            auction1.setLongDesc(auction.getLongDesc());
-            auction1.setShortDesc(auction.getShortDesc());
-            auction1.setPrice(auction.getPrice());
-            auction1.setCreatedAt(auction.getCreatedAt());
+            /*auction1.setProductId(auction.getProductId());
+            auction1.setTimeOptions(auction.getTimeOptions());*/
+            auction1.setActualPrice(auction.getActualPrice());
             return auctionRepository.save(auction1);
     }
 
@@ -50,13 +43,9 @@ public class AuctionController {
         Optional<Auction> auctionOptional = auctionRepository.findById(id) ;
         if(auctionOptional.isPresent()) {
             Auction auction1 = auctionOptional.get();
-            auction1.setName(auction.getName());
-            auction1.setCondition(auction.getCondition());
-            auction1.setImage(auction.getImage());
-            auction1.setLongDesc(auction.getLongDesc());
-            auction1.setShortDesc(auction.getShortDesc());
-            auction1.setPrice(auction.getPrice());
-            auction1.setCreatedAt(auction.getCreatedAt());
+            /*auction1.setProductId(auction.getProductId());
+            auction1.setTimeOptions(auction.getTimeOptions());*/
+            auction1.setActualPrice(auction.getActualPrice());
             auctionRepository.save(auction1);
         }
     }
@@ -66,7 +55,7 @@ public class AuctionController {
         Optional<Auction> auctionOptional = auctionRepository.findById(id) ;
         if(auctionOptional.isPresent()) {
             auctionRepository.deleteById(id);
-            return "Le produit qui contient l'id " + id + " a été supprimé" ;
+            return "L'enchère qui contient l'id " + id + " a été supprimé" ;
 
         }
         return "L'ID est introuvable";
